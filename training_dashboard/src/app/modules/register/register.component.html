@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+
+<form class="modal-content" >
+    <div class="container">
+      <h1 style="text-align: center;">Register</h1>
+      <hr>
+      <label for="name"><b>Name</b></label>
+      <input type="text" placeholder="Enter name" name="name" required>
+      
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+
+      <label for="location"><b>location</b></label>
+      <input type="text" placeholder="Enter location" name="location" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <label for="psw-repeat"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label>
+
+      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+      <div class="clearfix">
+        <button type="button" class="cancelbtn" (click)="cancel()">Cancel</button>
+        <button type="submit" class="signupbtn" (click)="signup()">Sign Up</button>
+      </div>
+    </div>
+  </form>
+
+  <app-footer></app-footer>
