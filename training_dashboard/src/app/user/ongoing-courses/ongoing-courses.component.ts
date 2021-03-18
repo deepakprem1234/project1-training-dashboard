@@ -18,7 +18,7 @@ export class OngoingCoursesComponent implements OnInit {
   Encourse: Courses;
   constructor(private courseservice: coursesDataService, private encourseService: EnrollCourseService) { 
     //this.course = courseservice.getCourses();
-    this.courseservice.getCourses().subscribe( response => { this.course = response } ) ;
+    this.courseservice.getCourses().subscribe( response => { this.course = response } ) ;//------------41
    // console.log("Deepak"); 
     //console.log(this.course.toString());
   }
@@ -28,7 +28,13 @@ export class OngoingCoursesComponent implements OnInit {
 
   enroll(x:number){
     console.log("added")
-    this.encourseService.enrollCourse(this.course[x-1]);
+    this.course.forEach( curr => {  //--------------------------------------------44
+        if( curr.id == x )     
+        {
+          this.encourseService.enrollCourse( curr );
+        }
+    });
+    
   }
 
 }

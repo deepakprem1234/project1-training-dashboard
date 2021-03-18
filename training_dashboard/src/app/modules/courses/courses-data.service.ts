@@ -37,6 +37,7 @@ export class coursesDataService {
      getCourses():Observable<any[]>{ //------------8
          //return this.course; ------------8
         return this.http.get<any[]>( this.APIUrl + '/Course' ) ;//-----------9 
+        location.reload() ;//---------------------------------42
      }
 
      addData(id:number,course_name:string,trainer_name:string,start_date:string,end_date:string){
@@ -58,8 +59,8 @@ export class coursesDataService {
         this.http.post(this.APIUrl+'/Course', this.currcourse).subscribe( response => {//-------25
             console.log(this.currcourse); //-----------------------23
         } ) ; //-------------20
-        this.getCourses() ;//-----------------------------30
-        
+       // this.getCourses() ;//-----------------------------30
+      //  location.reload() ; //---------------------42
     }
 
      removeCourse(doc:any){//-------------------------27
@@ -69,10 +70,11 @@ export class coursesDataService {
         this.http.delete( this.APIUrl+'/Course/' + doc ).subscribe( response => {//----------------28
             console.log(doc + " id deleted successfully") ; //------------------------29
         }) ;
-        this.getCourses() ;//----------------------31
+       // this.getCourses() ;//----------------------31
+       // location.reload() ; //------------------------------------43
      } 
 
-     editCourse(id:number,course_name:string,trainer_name:string,start_date:string,end_date:string,enrollments:number){//--------32
+     editCourse1(id:number,course_name:string,trainer_name:string,start_date:string,end_date:string,enrollments:number){//--------32
         console.log(this.currcourse) ; //----------33 
         this.currcourse.id = id ;//---------------------34
         this.currcourse.name = course_name ;//--------------35
@@ -84,5 +86,6 @@ export class coursesDataService {
          this.http.put( this.APIUrl+'/Course' , this.currcourse ).subscribe( response => {//-----------40
              console.log( this.currcourse ) ; 
          })
+        // location.reload() ; //------------------------------44
      }
 }

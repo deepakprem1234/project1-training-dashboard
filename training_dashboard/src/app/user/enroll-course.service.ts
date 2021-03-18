@@ -9,17 +9,26 @@ export class EnrollCourseService {
     constructor( private courseService : coursesDataService ) {
 
      }
-
+     idx:Number;//---------------------------45
      enrollCourse(course : Courses)
      {
-        if(this.enCourseList.indexOf(course) !== -1){
+          
+         this.idx = -1 ;//-------------------------46
+        this.enCourseList.forEach( curr => {//------------------------------47
+            if( curr.id == course.id )//-----------------------48
+                this.idx = 1 ; //--------------------------------49
+        });
+        //if(this.enCourseList.indexOf(course) !== -1){//------------------------50
+        if( this.idx == 1 ){  //-------------------------------51
             Swal.fire('You have already enrolled for '+course.name+' course')
         } else{
             this.enCourseList.push(course);
             course.enrollments = course.enrollments + 1 ; //--------------------------41
-            this.courseService.editCourse( course.id , course.name , course.instructor , course.start_date , course.end_date , course.enrollments ) ;// ----------------------------40
             Swal.fire('Thank you...', 'You have successfully enrolled in '+course.name+' course', 'success')
-         }
+            this.courseService.editCourse1( course.id , course.name , course.instructor , course.start_date , course.end_date , course.enrollments ) ;// ----------------------------40
+             
+        }
+        // location.reload() ; //-------------------------42
     }
          
 
